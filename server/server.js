@@ -69,7 +69,7 @@ app.get('/getfeedbacks', (req, res) => {
   MobileFeedBack.find((err, feedbacks) => {
     if (err)
       res.send(err)
-    res.json(feedbacks)
+    res.json(feedbacks.reverse())
   })
 })
 
