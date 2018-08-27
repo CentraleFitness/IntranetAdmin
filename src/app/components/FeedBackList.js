@@ -3,7 +3,7 @@ import React from "react"
 
 const row = (object, id) => {
   return <div key={id} style={{width : "99%", display : "flex", border : "1px solid black"}}>
-    <div style={{width: "10%"}}>Nom : {object.email}</div>
+    <div style={{width: "10%"}}>Email : {object.email}</div>
     <div style={{width: "10%"}}>Date : {object.date}</div>
     <div style={{width: "10%"}}>Version: {object.version}</div>
     <div style={{width: "70%"}}>{object.content}</div>
