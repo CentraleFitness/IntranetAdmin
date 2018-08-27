@@ -60,7 +60,7 @@ app.post('/postfeedback', (req, res) => {
   feedback.save(err => {
     if (err)
       res.send("ERROR")
-    res.send("OK")
+    res.json({status : "OK"})
   })
 
 })
