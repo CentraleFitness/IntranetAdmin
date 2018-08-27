@@ -4,38 +4,7 @@ import { Link } from 'react-router-dom';
 const links = [
   {
     to: '/',
-    text: 'Homepage'
-  },
-  {
-    to: '/about',
-    text: 'About'
-  },
-  {
-    to: '/profile/1',
-    text: 'Profile 1'
-  },
-  {
-    to: '/profile/2',
-    text: 'Profile 2'
-  },
-  {
-    to: '/login',
-    text: 'Login',
-    auth: false
-  },
-  {
-    to: '/dashboard',
-    text: 'Dashboard',
-    auth: true
-  },
-  {
-    to: '/logout',
-    text: 'Logout',
-    auth: true
-  },
-  {
-    to: '/this-is-broken',
-    text: 'Broken Page'
+    text: 'FeedBacks'
   }
 ];
 
