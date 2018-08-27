@@ -52,7 +52,7 @@ app.use(cookieParser());
 app.post('/postfeedback', (req, res) => {
 
   const feedback = new MobileFeedBack();
-  feedback.name = req.body.name;
+  feedback.email = req.body.email;
   feedback.content = req.body.content;
   feedback.date = req.body.date;
   feedback.version = req.body.version
