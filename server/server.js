@@ -2,9 +2,11 @@
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
+import mongoose from 'mongoose';
 import morgan from 'morgan';
 import path from 'path';
 import forceDomain from 'forcedomain';
+import MobileFeedBack from "./models/MobileFeedBack"
 import Loadable from 'react-loadable';
 import cookieParser from 'cookie-parser';
 
@@ -14,6 +16,12 @@ import loader from './loader';
 // Create our express app using the port optionally specified
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://@127.0.0.1:27017/centralefitness', { useNewUrlParser: true }).catch((err) => {
+  console.error(err);
+});
+
 
 // NOTE: UNCOMMENT THIS IF YOU WANT THIS FUNCTIONALITY
 /*
@@ -40,6 +48,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(cookieParser());
+
+app.post('/postfeedback', (req, res) => {
+
+  const feedback = new MobileFeedBack();
+  feedback.name = req.body.name;
+  feedback.content = req.body.content;
+  feedback.date = req.body.date;
+  feedback.version = req.body.version
+
+  feedback.save(err => {
+    if (err)
+      res.send("ERROR")
+    res.send("OK")
+  })
+
+})
+
+app.get('/getfeedbacks', (req, res) => {
+  MobileFeedBack.find((err, feedbacks) => {
+    if (err)
+      res.send(err)
+    res.json(feedbacks)
+  })
+})
 
 // Set up homepage, static assets, and capture everything else
 app.use(express.Router().get('/', loader));

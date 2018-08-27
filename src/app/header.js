@@ -26,7 +26,7 @@ const HeaderLink = ({ to, text, current }) => (
 
 export default ({ isAuthenticated, current }) => (
   <header id="header">
-    <h1 id="title">My awesome website</h1>
+    <h1 id="title">Intranet Admin Centrale Fitness</h1>
     <ul id="links">
       {links.map((link, index) => {
         const TheLink = <HeaderLink key={index} current={current} {...link} />;
