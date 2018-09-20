@@ -19,7 +19,37 @@ class App extends Component {
     }
   }
 
+  constructor (props) {
+    super(props)
+
+
+    this.state = {connected: false}
+  }
+
+
+  handlePasswordChange (event) {
+    this.password = event.target.value
+  }
+
+  onSubmit () {
+    if (this.password && this.password === "Epitech42"){
+      this.setState(() => ({connected: true}))
+    }
+  }
+
   render() {
+
+
+    if (!this.state.connected){
+      return (
+        <div>
+          <input onChange={(event) => {this.handlePasswordChange(event)}} type="password"/>
+          <input onClick={() => {this.onSubmit()}} type="submit"/>
+        </div>
+      )
+    }
+
+
     return (
       <div id="app">
         <Header

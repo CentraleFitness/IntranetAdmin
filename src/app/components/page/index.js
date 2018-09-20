@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 
 class Page extends Component {
 
+
   render() {
     const { children, id, className, ...rest } = this.props;
 
